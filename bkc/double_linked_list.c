@@ -19,13 +19,29 @@ dll_t dll_create_list(){
 }
 
 void dll_push_back(dll_t list, dll_node_t node){
-    list->back = node;
-    node->next = NULL;
+    if(list->back == NULL){
+        list->back = node;
+        list->front = node;
+    }
+    else{
+        node->prev = list->back;
+        list->back->next = node;
+        list->back = node;
+        node->next = NULL;
+    }
 }
 
 void dll_push_front(dll_t list, dll_node_t node){
-    list->front = node;
-    node->prev = NULL;
+    if(list->back == NULL){
+        list->back = node;
+        list->front = node;
+    }
+    else{
+        node->next = list->front;
+        list->front->prev = node;
+        list->front = node;
+        node->prev = NULL;
+    }
 }
 
 void dll_free_list(dll_t list){
