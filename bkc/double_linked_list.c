@@ -18,6 +18,16 @@ dll_t dll_create_list(){
     return list;
 }
 
+void dll_push_back(dll_t list, dll_node_t node){
+    list->back = node;
+    node->next = NULL;
+}
+
+void dll_push_front(dll_t list, dll_node_t node){
+    list->front = node;
+    node->prev = NULL;
+}
+
 void dll_free_list(dll_t list){
-    
+
 }
